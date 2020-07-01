@@ -130,16 +130,16 @@
             <section id="tm-section-1" class="tm-section">
                 <div class="ml-auto">
                     <header class="mb-4"><h1 class="tm-text-shadow">Souscrire</h1></header>
-                    <p class="mb-5 tm-font-big">
-                    <form method="post" action="#">
+                    <p class="mb-5 tm-font-big" style="border-radius: 10px;">
+                    <form method="post" action="Meilleur-Forfait">
                         <table>
                             <tr>
                                 <td>Somme </td>
-                                <td><input type="number" name="som"></td>
+                                <td><input type="number" name="som" required></td>
                             </tr>
                             <tr>
-                                <td>Jour </td>
-                                <td><select name="jour">
+                                <td>Jour(s)</td>
+                                <td><select name="jour" required>
                                     <option>1</option>
                                     <option>3</option>
                                     <option>7</option>
@@ -148,7 +148,7 @@
                             </tr>
                             <tr>
                                 <td>Priorité des SMS </td>
-                                <td><select name="sms">
+                                <td><select name="sms" required>
                                     <option>1</option>
                                     <option>0</option>
                                     <option>2</option>
@@ -157,7 +157,7 @@
                             </tr>
                             <tr>
                                 <td>Priorité des Appels </td>
-                                <td><select name="appels">
+                                <td><select name="appels" required>
                                     <option>2</option>
                                     <option>1</option>
                                     <option>0</option>
@@ -165,7 +165,7 @@
                                 </select></td>
                             <tr>
                                 <td>Priorité des Data </td>
-                                <td><select name="data">
+                                <td><select name="data" required>
                                     <option>3</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -179,7 +179,6 @@
                     </form>
 
                     </p>
-
                 </div>
             </section>
         </div>	<!-- .tm-content -->

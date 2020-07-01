@@ -19,6 +19,11 @@
     <servlet-class>controlleur.ServletHemle</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>servletMeilleurForfait</servlet-name>
+    <servlet-class>controlleur.ServletMeilleurForfait</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>souscrire</servlet-name>
     <url-pattern>/Souscrire</url-pattern>
@@ -32,6 +37,11 @@
   <servlet-mapping>
     <servlet-name>servletHemle</servlet-name>
     <url-pattern>/ForfaitHemle</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>servletMeilleurForfait</servlet-name>
+    <url-pattern>/Meilleur-Forfait</url-pattern>
   </servlet-mapping>
 
 </web-app>
