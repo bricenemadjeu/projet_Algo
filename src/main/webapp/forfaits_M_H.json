@@ -1,0 +1,406 @@
+{
+	"forfait_mango":
+		[
+			{
+				"id":1,
+				"nom":"Mango Plenty J",
+				"sms":25,
+				"appels":0,
+				"data":0,
+				"validite":1,
+				"prix":100
+			},
+			{
+				"id":2,
+				"nom":"Mango Plenty S",
+				"sms":1000,
+				"appels":1460,
+				"data":0,
+				"validite":7,
+				"prix":250
+			},
+			{
+				"id":3,
+				"nom":"Mango Plenty M",
+				"sms":1000,
+				"appels":1950,
+				"data":0,
+				"validite":30,
+				"prix":450
+			},
+			{
+				"id":4,
+				"nom":"Mango Giga 3J 1200",
+				"sms":0,
+				"appels":0,
+				"data":1000,
+				"validite":3,
+				"prix":1200
+			},
+			{
+				"id":5,
+				"nom":"Mango Giga 3J 5400",
+				"sms":0,
+				"appels":15000,
+				"data":0,
+				"validite":3,
+				"prix":5400
+			},
+			{
+				"id":6,
+				"nom":"Mango Giga 7J 2650",
+				"sms":0,
+				"appels":0,
+				"data":7000,
+				"validite":7,
+				"prix":2650
+			},
+			{
+				"id":7,
+				"nom":"Mango Giga 7J 5400",
+				"sms":0,
+				"appels":0,
+				"data":14000,
+				"validite":7,
+				"prix":5400
+			},
+			{
+				"id":8,
+				"nom":"Mango Giga 7J 15400",
+				"sms":0,
+				"appels":0,
+				"data":35000,
+				"validite":7,
+				"prix":15400
+			},
+			{
+				"id":9,
+				"nom":"Mango Giga 30J 10000",
+				"sms":0,
+				"appels":0,
+				"data":30000,
+				"validite":30,
+				"prix":10000
+			},
+			{
+				"id":10,
+				"nom":"Mango Giga 30J 21500",
+				"sms":0,
+				"appels":0,
+				"data":60000,
+				"validite":30,
+				"prix":21500
+			},
+			{
+				"id":11,
+				"nom":"Mango Flex 300-1",
+				"sms":100,
+				"appels":1300,
+				"data":30,
+				"validite":7,
+				"prix":300
+			},
+			{
+				"id":12,
+				"nom":"Mango Flex 300-2",
+				"sms":100,
+				"appels":1500,
+				"data":0,
+				"validite":7,
+				"prix":300
+			},
+			{
+				"id":13,
+				"nom":"Mango Flex 300-3",
+				"sms":100,
+				"appels":1400,
+				"data":25,
+				"validite":7,
+				"prix":300
+			},
+			{
+				"id":14,
+				"nom":"Mango Flex 300-4",
+				"sms":100,
+				"appels":1200,
+				"data":0,
+				"validite":7,
+				"prix":300
+			},
+			{
+				"id":15,
+				"nom":"Mango PS combo",
+				"sms":10000,
+				"appels":15000,
+				"data":6000,
+				"validite":30,
+				"prix":5000
+			},
+			{
+				"id":16,
+				"nom":"Mango PS 2100",
+				"sms":0,
+				"appels":0,
+				"data":4500,
+				"validite":30,
+				"prix":2100
+			},
+			{
+				"id":17,
+				"nom":"Mango PS talk",
+				"sms":0,
+				"appels":10000,
+				"data":0,
+				"validite":30,
+				"prix":1000
+			},
+			{
+				"id":18,
+				"nom":"Mango PS 1200",
+				"sms":0,
+				"appels":0,
+				"data":2200,
+				"validite":30,
+				"prix":1200
+			},
+			{
+				"id":19,
+				"nom":"Mango PS 500",
+				"sms":0,
+				"appels":0,
+				"data":900,
+				"validite":30,
+				"prix":500
+			},
+			{
+				"id":20,
+				"nom":"Mango PS 400",
+				"sms":10000,
+				"appels":0,
+				"data":0,
+				"validite":30,
+				"prix":400
+			},
+			{
+				"id":21,
+				"nom":"Mango PS 50",
+				"sms":0,
+				"appels":0,
+				"data":50,
+				"validite":1,
+				"prix":50
+			}
+		],
+
+	"forfait_hemle":
+		[
+			{
+				"id":1,
+				"nom":"Hemle Jour 99",
+				"sms":0,
+				"appels":750,
+				"data":0,
+				"validite":1,
+				"prix":99
+			},
+			{
+
+				"id":2,
+				"nom":"Hemle Jour 149",
+				"sms":0,
+				"appels":1460,
+				"data":0,
+				"validite":1,
+				"prix":149
+			},
+			{
+				"id":3,
+				"nom":"Hemle Jour 199",
+				"sms":0,
+				"appels":1950,
+				"data":0,
+				"validite":1,
+				"prix":199
+			},
+			{
+				"id":4,
+				"nom":"Hemle Semaine 499",
+				"sms":0,
+				"appels":3800,
+				"data":0,
+				"validite":7,
+				"prix":499
+			},
+			{
+				"id":5,
+				"nom":"Hemle Semaine 999",
+				"sms":0,
+				"appels":7950,
+				"data":0,
+				"validite":7,
+				"prix":999
+			},
+			{
+				"id":6,
+				"nom":"Hemle Semaine 1500",
+				"sms":50,
+				"appels":12200,
+				"data":0,
+				"validite":7,
+				"prix":1500
+			},
+			{
+				"id":7,
+				"nom":"Hemle Mois 2999",
+				"sms":0,
+				"appels":23390,
+				"data":0,
+				"validite":30,
+				"prix":2999
+			},
+			{
+				"id":8,
+				"nom":"Hemle Net 3J",
+				"sms":0,
+				"appels":0,
+				"data":160,
+				"validite":3,
+				"prix":160
+			},
+			{
+				"id":9,
+				"nom":"Hemle Net 599",
+				"sms":0,
+				"appels":0,
+				"data":660,
+				"validite":30,
+				"prix":599
+			},
+			{
+				"id":10,
+				"nom":"Hemle Net 849",
+				"sms":0,
+				"appels":0,
+				"data":1000,
+				"validite":30,
+				"prix":1500
+			},
+			{
+				"id":11,
+				"nom":"Hemle Net 949",
+				"sms":0,
+				"appels":0,
+				"data":1770,
+				"validite":30,
+				"prix":949
+			},
+			{
+				"id":12,
+				"nom":"Hemle Appels 100",
+				"sms":20,
+				"appels":300,
+				"data":0,
+				"validite":1,
+				"prix":100
+			},
+			{
+				"id":13,
+				"nom":"Hemle Appels J 250",
+				"sms":20,
+				"appels":750,
+				"data":0,
+				"validite":1,
+				"prix":250
+			},
+			{
+				"id":14,
+				"nom":"Hemle Appels S 300",
+				"sms":30,
+				"appels":900,
+				"data":0,
+				"validite":7,
+				"prix":300
+			},
+			{
+				"id":15,
+				"nom":"Hemle Appels M 600",
+				"sms":50,
+				"appels":1800,
+				"data":0,
+				"validite":30,
+				"prix":600
+			},
+			{
+				"id":16,
+				"nom":"Hemle Appels M 26k",
+				"sms":500,
+				"appels":96000,
+				"data":0,
+				"validite":30,
+				"prix":26000
+			},
+			{
+				"id":17,
+				"nom":"Hemle Illimité J",
+				"sms":150,
+				"appels":0,
+				"data":0,
+				"validite":1,
+				"prix":20
+			},
+			{
+				"id":18,
+				"nom":"Hemle Illimité M",
+				"sms":9000,
+				"appels":0,
+				"data":0,
+				"validite":30,
+				"prix":500
+			},
+			{
+				"id":19,
+				"nom":"Hemle Comp S 1000",
+				"sms":100,
+				"appels":3000,
+				"data":75,
+				"validite":7,
+				"prix":1000
+			},
+			{
+				"id":20,
+				"nom":"Hemle Comp S 2500",
+				"sms":100,
+				"appels":8500,
+				"data":250,
+				"validite":7,
+				"prix":1500
+			},
+			{
+				"id":21,
+				"nom":"Hemle Comp M 3000",
+				"sms":250,
+				"appels":9000,
+				"data":250,
+				"validite":30,
+				"prix":3000
+			},
+			{
+				"id":22,
+				"nom":"Hemle Comp M 5000",
+				"sms":500,
+				"appels":17000,
+				"data":500,
+				"validite":30,
+				"prix":5000
+			},
+			{
+				"id":23,
+				"nom":"Hemle Comp M 10000",
+				"sms":500,
+				"appels":35000,
+				"data":1000,
+				"validite":30,
+				"prix":10000
+			}
+		]
+}

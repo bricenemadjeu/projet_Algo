@@ -1,6 +1,7 @@
 <%@ page import="entite.Forfait" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="org.json.simple.parser.ParseException" %><%--
+<%@ page import="org.json.simple.parser.ParseException" %>
+<%--
   Created by IntelliJ IDEA.
   User: Brice Dylane
   Date: 30/06/2020
@@ -15,7 +16,7 @@
     <link rel="icon" type="image/png" href="img/sans_engagement_duree.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mes Forfaits</title>
+    <title>Meilleurs Forfaits</title>
     <!--
 
     Template 2102 Constructive
@@ -201,7 +202,10 @@
                     </form>
 
                     <article>
-                        <h1 class="tm-text-shadow">Pack des meilleurs forfaits Mango</h1>
+                        <h3 class="tm-text-shadow">Forfait(s) pour <% out.println(request.getAttribute("jour")); %> Jour(s)</h3>
+                        <h3 class="tm-text-shadow">Somme: <% out.println(request.getAttribute("somme")); %> FCFA</h3>
+                        <h3 class="tm-text-shadow">Priorité SMS: <% out.println(request.getAttribute("sms")); %>; Priorité Appels: <% out.println(request.getAttribute("appel")); %>; Priorité Data: <% out.println(request.getAttribute("data")); %></h3>
+                        <br><h1 class="tm-text-shadow">Pack des meilleurs forfaits Mango</h1>
                         <table>
                             <tr>
                                 <td>
@@ -211,8 +215,8 @@
                                     <%
                                         }
                                         else {
-                                        for (int j=0;j<pack.size();j++){
-                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(j);
+                                        //for (int j=0;j<=0;j++){
+                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0);
                                     %>
                                     <table>
                                         <tr>
@@ -245,7 +249,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <% } }%>
+                                    <% } //}%>
                                 </td>
                             </tr>
                         </table>
@@ -262,8 +266,8 @@
                                     <h3 class="tm-text-shadow">Aucun Forfait Hemle disponible</h3>
                                        <% }
                                         else {
-                                        for (int j=0;j<pack1.size();j++){
-                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(j);
+                                       // for (int j=0;j<pack1.size();j++){
+                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0);
                                     %>
                                     <table>
                             <tr>
@@ -296,7 +300,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <% } }%>
+                        <% } //}%>
                         </td>
                         </tr>
                         </table>

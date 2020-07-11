@@ -16,7 +16,7 @@ public class Test {
         Operation operation = new Operation();
         ArrayList list = new ArrayList(); //Liste de forfaits combines
         ArrayList<Forfait> f = new ArrayList<Forfait>();
-        ArrayList l = operation.meilleur_forfait_Hemle(2000,30,1,0,2);
+        ArrayList l = operation.meilleur_forfait_Mango(1000,7,0,0,1);
 
         /*ArrayList<Forfait> l = operation.meilleur_forfait(6000,7,3,1,3);
         System.out.println("---------------------------------------Meilleur Forfait Mango-----------------------------------------");

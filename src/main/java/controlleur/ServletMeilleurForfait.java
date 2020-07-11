@@ -39,7 +39,11 @@ public class ServletMeilleurForfait extends HttpServlet {
 
 
 
-
+        request.setAttribute("sms", sms);
+        request.setAttribute("appel", appels);
+        request.setAttribute("data", data);
+        request.setAttribute("somme", somme);
+        request.setAttribute("jour", jour);
         request.setAttribute("pack_m",list_m);
         request.setAttribute("pack_h",list_h);
         this.getServletContext().getRequestDispatcher("/forfaits.jsp").forward(request, response);

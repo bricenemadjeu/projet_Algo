@@ -70,7 +70,7 @@ public class Operation {
     private ArrayList<Forfait> smsEgaleZero(ArrayList<Forfait> list, long somme, long jour){
         ArrayList<Forfait> l = new ArrayList<Forfait>();
         for (Forfait f: list){ // Trier avec SMS==0
-            if((f.getSms()==0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+            if((f.getSms()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
                 l.add(f);
             }
         }
@@ -101,10 +101,10 @@ public class Operation {
      * @param jour
      * @return
      */
-    private ArrayList<Forfait> smsSupZero(ArrayList<Forfait> list, long somme, long jour){
+    private ArrayList<Forfait> smsSupZero(ArrayList<Forfait> list, long somme, long jour){   //Modifier
         ArrayList<Forfait> l = new ArrayList<Forfait>();
         for (Forfait f: list){ // Trier avec SMS>0 decroissant
-            if((f.getSms()>0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+            if((f.getSms()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
                 l.add(f);
             }
         }
@@ -122,7 +122,7 @@ public class Operation {
     private ArrayList<Forfait> appelsEgaleZero(ArrayList<Forfait> list, long somme, long jour){
         ArrayList<Forfait> l = new ArrayList<Forfait>();
         for (Forfait f: list){ // Trier avec Appels=0
-            if((f.getAppel()==0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+            if((f.getAppel()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
                 l.add(f);
             }
         }
@@ -136,10 +136,10 @@ public class Operation {
      * @param jour
      * @return
      */
-    private ArrayList<Forfait> appelsSupZero(ArrayList<Forfait> list, long somme, long jour){
+    private ArrayList<Forfait> appelsSupZero(ArrayList<Forfait> list, long somme, long jour){    //Modifier
         ArrayList<Forfait> l = new ArrayList<Forfait>();
         for (Forfait f: list){  // Trier avec Appels>0
-            if((f.getAppel()>0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+            if((f.getAppel()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
                 l.add(f);
             }
         }
@@ -153,10 +153,10 @@ public class Operation {
      * @param jour
      * @return
      */
-    private ArrayList<Forfait> dataSupZero(ArrayList<Forfait> list, long somme, long jour){
+    private ArrayList<Forfait> dataSupZero(ArrayList<Forfait> list, long somme, long jour){ //Modifier
         ArrayList<Forfait> l = new ArrayList<Forfait>();
         for (Forfait f: list){
-            if((f.getData()>0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+            if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
                 l.add(f);
             }
         }
@@ -187,7 +187,8 @@ public class Operation {
             if(i==0){   // SMS
                 ArrayList<Forfait> l = new ArrayList<Forfait>();
 
-                if(p[i]==0){ // Trier avec SMS = 0
+                if(p[i]==0){ // Trier avec SMS >= 0
+                    Collections.sort(l,Forfait.ComparatoSMS);
                     list_f = smsEgaleZero(list_f,somme,jour);
                 }
 
@@ -209,7 +210,8 @@ public class Operation {
 
            else if(i==1){  //Appels
                 ArrayList<Forfait> l1 = new ArrayList<Forfait>();
-                if(p[i]==0){ // Trier avec Appels=0
+                if(p[i]==0){ // Trier avec Appels
+                    Collections.sort(l1,Forfait.ComparatoAppels);
                     list_f = appelsEgaleZero(list_f,somme,jour);
                 }
 
@@ -229,7 +231,7 @@ public class Operation {
                 //fin
                 else if(p[i]==2){
 
-                    if(p[i-1]==3){ //Prioriser les SMS
+                    if(p[i-1]>2){ //Prioriser les SMS
                         l1= appelsSupZero(list_f,somme,jour);
                         Collections.sort(l1,Forfait.ComparatoAppels);
                         Collections.sort(l1,Forfait.ComparatoSMS);
@@ -254,12 +256,127 @@ public class Operation {
             else if(i==2){  // Data
                 ArrayList<Forfait> l2 = new ArrayList<Forfait>();
                 if(p[i]==0){
-                    for (Forfait f: list_f){ // Trier avec Data=0
-                        if((f.getData()==0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
-                            l2.add(f);
+                    if(p[i-1]==1 || p[i-1]==2){
+                        if (p[i-2]>2){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //pririser les Appels
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
                         }
                     }
-                    list_f = l2;
+
+                }
+                else if(p[i]==1){
+                    if(p[i-1]==2){
+                        if(p[i-2]>2){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //Prioriser les appels
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
+                        }
+                    }
+                    else if(p[i-1]==3){
+                        for (Forfait f: list_f){
+                            if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                l2.add(f);
+                            }
+                        }
+                        Collections.sort(l2,Forfait.ComparatoData);
+                        Collections.sort(l2, Forfait.ComparatoAppels);
+                        list_f = l2;
+                    }
+                    else if(p[i-1]==1){
+                        if(p[i-2]>1){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
+                        }
+                    }
+                    else if (p[i-1]==0){
+                        if(p[i-2]>0){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            list_f = l2;
+                        }
+
+                    }
+                    else {
+                        for (Forfait f: list_f){
+                            if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                l2.add(f);
+                            }
+                        }
+                        Collections.sort(l2,Forfait.ComparatoData);
+                        list_f = l2;
+                    }
 
                 }
 
@@ -347,7 +464,8 @@ public class Operation {
             if(i==0){   // SMS
                 ArrayList<Forfait> l = new ArrayList<Forfait>();
 
-                if(p[i]==0){ // Trier avec SMS = 0
+                if(p[i]==0){ // Trier avec SMS >= 0
+                    Collections.sort(l,Forfait.ComparatoSMS);
                     list_f = smsEgaleZero(list_f,somme,jour);
                 }
 
@@ -369,7 +487,8 @@ public class Operation {
 
             else if(i==1){  //Appels
                 ArrayList<Forfait> l1 = new ArrayList<Forfait>();
-                if(p[i]==0){ // Trier avec Appels=0
+                if(p[i]==0){ // Trier avec Appels
+                    Collections.sort(l1,Forfait.ComparatoAppels);
                     list_f = appelsEgaleZero(list_f,somme,jour);
                 }
 
@@ -389,7 +508,7 @@ public class Operation {
                 //fin
                 else if(p[i]==2){
 
-                    if(p[i-1]==3){ //Prioriser les SMS
+                    if(p[i-1]>2){ //Prioriser les SMS
                         l1= appelsSupZero(list_f,somme,jour);
                         Collections.sort(l1,Forfait.ComparatoAppels);
                         Collections.sort(l1,Forfait.ComparatoSMS);
@@ -414,12 +533,127 @@ public class Operation {
             else if(i==2){  // Data
                 ArrayList<Forfait> l2 = new ArrayList<Forfait>();
                 if(p[i]==0){
-                    for (Forfait f: list_f){ // Trier avec Data=0
-                        if((f.getData()==0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
-                            l2.add(f);
+                    if(p[i-1]==1 || p[i-1]==2){
+                        if (p[i-2]>2){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //pririser les Appels
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
                         }
                     }
-                    list_f = l2;
+
+                }
+                else if(p[i]==1){
+                    if(p[i-1]==2){
+                        if(p[i-2]>2){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //Prioriser les appels
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
+                        }
+                    }
+                    else if(p[i-1]==3){
+                        for (Forfait f: list_f){
+                            if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                l2.add(f);
+                            }
+                        }
+                        Collections.sort(l2,Forfait.ComparatoData);
+                        Collections.sort(l2, Forfait.ComparatoAppels);
+                        list_f = l2;
+                    }
+                    else if(p[i-1]==1){
+                        if(p[i-2]>1){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            list_f = l2;
+                        }
+                    }
+                    else if (p[i-1]==0){
+                        if(p[i-2]>0){
+                            //Prioriser les SMS
+                            for (Forfait f: list_f){ // Trier avec Data=0
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            Collections.sort(l2, Forfait.ComparatoAppels);
+                            Collections.sort(l2, Forfait.ComparatoSMS);
+                            list_f = l2;
+                        }
+                        else {
+                            for (Forfait f: list_f){
+                                if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                    l2.add(f);
+                                }
+                            }
+                            Collections.sort(l2,Forfait.ComparatoData);
+                            list_f = l2;
+                        }
+
+                    }
+                    else {
+                        for (Forfait f: list_f){
+                            if((f.getData()>=0) && (f.getPrix()<=somme) && (f.getValidite()==jour)){
+                                l2.add(f);
+                            }
+                        }
+                        Collections.sort(l2,Forfait.ComparatoData);
+                        list_f = l2;
+                    }
 
                 }
 
@@ -492,7 +726,7 @@ public class Operation {
      */
     private ArrayList packForfait(ArrayList<Forfait> list, long somme){
         ArrayList l = new ArrayList();
-        long s;
+        /*long s;
         //Faire les combinaisons de pack de forfaits
         for (int i=0; i<list.size();i++){
             s = list.get(i).getPrix();
@@ -508,7 +742,8 @@ public class Operation {
             }
 
             l.add(list_c);
-        }
+        }*/
+        l.add(list);
         return l;
     }
 
