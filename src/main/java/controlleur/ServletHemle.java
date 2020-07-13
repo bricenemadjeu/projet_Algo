@@ -22,7 +22,7 @@ public class ServletHemle extends HttpServlet {
         Operation operation = new Operation();
         ArrayList<Forfait> list = new ArrayList<Forfait>();
         try {
-            list = operation.list_forfait_Hemle();
+            list = operation.list_forfait(2);
         } catch (ParseException e) {
             e.printStackTrace();
         }

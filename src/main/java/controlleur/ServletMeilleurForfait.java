@@ -25,17 +25,16 @@ public class ServletMeilleurForfait extends HttpServlet {
         ArrayList list_h = null;
 
         try {
-            list_h = operation.meilleur_forfait_Hemle(somme,jour,sms,appels,data);
+            list_m = operation.meilleur_forfait(somme,jour,sms,appels,data,1); // Forfait Mongo
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         try {
-            list_m = operation.meilleur_forfait_Mango(somme,jour,sms,appels,data);
+            list_h = operation.meilleur_forfait(somme,jour,sms,appels,data,2); // Forfait Hemle
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
 
 

@@ -46,7 +46,7 @@
 
         .customers tr:nth-child(even){background-color: rgb(106,106,255);}
 
-        .customers tr:hover {background-color: rgb(0,0,196);}
+        .customers tr {background-color: rgb(0,0,196);}
 
         .customers th {
             padding-top: 12px;
@@ -253,6 +253,13 @@
                                 </td>
                             </tr>
                         </table>
+                        <h3 class="tm-text-shadow">Proposition optimal:</h3>
+                        <% ArrayList list_p = (ArrayList) pack.get(1);
+                        for(int i=0; i<list_p.size();i++){
+                            int t[] = (int[]) list_p.get(i);
+                            %>
+                            <h3 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Numero <% out.println(t[0]); %> ---> <% out.println(t[1]); %> fois</h3>
+                        <% } %>
                     </article>
 
                     <article>

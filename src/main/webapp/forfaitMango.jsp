@@ -45,7 +45,7 @@
 
         #customers tr:nth-child(even){background-color: rgb(106,106,255);}
 
-        #customers tr:hover {background-color: rgb(0,0,196);}
+        #customers tr {background-color: rgb(0,0,196);}
 
         #customers th {
             padding-top: 12px;

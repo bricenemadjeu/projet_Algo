@@ -24,7 +24,7 @@ public class ServletMango extends HttpServlet {
         Operation operation = new Operation();
         ArrayList<Forfait> list = new ArrayList<Forfait>();
         try {
-            list = operation.list_forfait_Mango();
+            list = operation.list_forfait(1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
