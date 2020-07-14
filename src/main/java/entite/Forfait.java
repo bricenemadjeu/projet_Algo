@@ -10,11 +10,12 @@ public class Forfait {
     private long data;
     private long validite;
     private long prix;
+    private float valeur;
 
     public Forfait() {
     }
 
-    public Forfait(long id, String nomForfait, long sms, long appel, long data, long validite, long prix) {
+    public Forfait(Long id, String nomForfait, long sms, long appel, long data, long validite, long prix, float valeur) {
         this.id = id;
         this.nomForfait = nomForfait;
         this.sms = sms;
@@ -22,6 +23,7 @@ public class Forfait {
         this.data = data;
         this.validite = validite;
         this.prix = prix;
+        this.valeur = valeur;
     }
 
     public long getId() {
@@ -80,6 +82,14 @@ public class Forfait {
         this.prix = prix;
     }
 
+    public float getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(float valeur) {
+        this.valeur = valeur;
+    }
+
     @Override
     public String toString() {
         return "Forfait{" +
@@ -87,12 +97,12 @@ public class Forfait {
                 ", nomForfait='" + nomForfait + '\'' +
                 ", sms=" + sms +
                 ", appel=" + appel +
-                ", data=" + data +"Mo"+
+                ", data=" + data +
                 ", validite=" + validite +
                 ", prix=" + prix +
+                ", valeur=" + valeur +
                 '}';
     }
-
 
     public static Comparator<Forfait> ComparatoSMS = new Comparator<Forfait>() {
         @Override
@@ -112,6 +122,13 @@ public class Forfait {
         @Override
         public int compare(Forfait o1, Forfait o2) {
             return (int) (o2.getData()-o1.getData());
+        }
+    };
+
+    public static Comparator<Forfait> ComparatoValeur = new Comparator<Forfait>() {
+        @Override
+        public int compare(Forfait o1, Forfait o2) {
+            return (int) (o2.getValeur()-o1.getValeur());
         }
     };
 
