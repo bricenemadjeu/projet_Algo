@@ -1,5 +1,6 @@
 package controlleur;
 
+import entite.DynamiqueOperation;
 import entite.Operation;
 import org.json.simple.parser.ParseException;
 
@@ -19,19 +20,20 @@ public class ServletMeilleurForfait extends HttpServlet {
         int sms = Integer.parseInt(request.getParameter("sms"));
         int appels = Integer.parseInt(request.getParameter("appels"));
         int data = Integer.parseInt(request.getParameter("data"));
-        Operation operation = new Operation();
+
+        DynamiqueOperation operation  = new DynamiqueOperation();
 
         ArrayList list_m = null;
         ArrayList list_h = null;
 
         try {
-            list_m = operation.meilleur_forfait(somme,jour,sms,appels,data,1); // Forfait Mongo
+            list_m = operation.meilleurForfait(somme,jour,sms,appels,data,1); // Forfait Mongo
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         try {
-            list_h = operation.meilleur_forfait(somme,jour,sms,appels,data,2); // Forfait Hemle
+            list_h = operation.meilleurForfait(somme,jour,sms,appels,data,2); // Forfait Hemle
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -187,4 +187,17 @@ public class DynamiqueOperation {
         return s;
     }
 
+    public ArrayList meilleurForfait(long somme, long jour, long sms, long appel, long data,int key) throws IOException, ParseException {
+        ArrayList list = new ArrayList();
+        ArrayList<Forfait> l = list_forfait(key);
+        l = triForfait(l,somme,jour); // Trier les forfaits
+        ArrayList<Forfait> list_pondere = valeurPondere(l,somme,jour,sms,appel,data);
+        list.add(list_pondere);
+
+        double[] value = knapsack(somme,list_pondere);
+        int[] s = knapsacksol(somme,value,list_pondere);
+        list.add(s);
+        return list;
+    }
+
 }

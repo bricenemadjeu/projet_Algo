@@ -213,10 +213,10 @@
                                         if(pack.isEmpty()){ %>
                                     <h3 class="tm-text-shadow">Aucun Forfait Mango disponible</h3>
                                     <%
-                                    }
-                                    else {
+                                        }
+                                        else {
                                         //for (int j=0;j<=0;j++){
-                                        ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0);
+                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0);
                                     %>
                                     <table>
                                         <tr>
@@ -231,8 +231,8 @@
                                                         <th>Validité</th>
                                                         <th>Prix</th>
                                                     </tr>
-                                                    <%
-                                                        for (Forfait f:l){ %>
+                                                <%
+                                                    for (Forfait f:l){ %>
                                                     <tr>
                                                         <td><% out.println(f.getId()); %></td>
                                                         <td><% out.println(f.getNomForfait()); %></td>
@@ -243,7 +243,7 @@
                                                         <td><% out.println(f.getPrix()); %> FCFA</td>
                                                     </tr>
 
-                                                    <% } %>
+                                                <% } %>
                                                 </table>
                                                 <br>
                                             </td>
@@ -254,12 +254,12 @@
                             </tr>
                         </table>
                         <h3 class="tm-text-shadow">Proposition optimal:</h3>
-                        <% int[] list_p = (int[]) pack.get(1);
-                            for(int i=0; i<list_p.length;i++){
-                                if(list_p[i]>0){
-                        %>
-                        <h2 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
-                        <% } } %>
+                        <% ArrayList list_p = (ArrayList) pack.get(1);
+                        for(int i=0; i<list_p.size();i++){
+                            int t[] = (int[]) list_p.get(i);
+                            %>
+                            <h3 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Numero <% out.println(t[0]); %> ---> <% out.println(t[1]); %> fois</h3>
+                        <% } %>
                     </article>
 
                     <article>
@@ -267,57 +267,50 @@
                         <table>
                             <tr>
                                 <td>
-                                    <%
-                                        ArrayList pack1 = (ArrayList) request.getAttribute("pack_h");
+                                        <%
+                                            ArrayList pack1 = (ArrayList) request.getAttribute("pack_h");
                                         if(pack1.isEmpty()){ %>
                                     <h3 class="tm-text-shadow">Aucun Forfait Hemle disponible</h3>
-                                    <% }
-                                    else {
-                                        // for (int j=0;j<pack1.size();j++){
-                                        ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0);
+                                       <% }
+                                        else {
+                                       // for (int j=0;j<pack1.size();j++){
+                                            ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0);
                                     %>
                                     <table>
+                            <tr>
+                                <td>
+                                    <table class="customers">
                                         <tr>
-                                            <td>
-                                                <table class="customers">
-                                                    <tr>
-                                                        <th>Numéro</th>
-                                                        <th>Nom</th>
-                                                        <th>SMS</th>
-                                                        <th>Appels</th>
-                                                        <th>Data (Mo)</th>
-                                                        <th>Validité</th>
-                                                        <th>Prix</th>
-                                                    </tr>
-                                                    <%
-                                                        for (Forfait f:l){ %>
-                                                    <tr>
-                                                        <td><% out.println(f.getId()); %></td>
-                                                        <td><% out.println(f.getNomForfait()); %></td>
-                                                        <td><% out.println(f.getSms()); %></td>
-                                                        <td><% out.println(f.getAppel()); %></td>
-                                                        <td><% out.println(f.getData()); %> Mo</td>
-                                                        <td><% out.println(f.getValidite()); %> Jour(s)</td>
-                                                        <td><% out.println(f.getPrix()); %> FCFA</td>
-                                                    </tr>
-
-                                                    <% } %>
-                                                </table>
-                                                <br>
-                                            </td>
+                                            <th>Numéro</th>
+                                            <th>Nom</th>
+                                            <th>SMS</th>
+                                            <th>Appels</th>
+                                            <th>Data (Mo)</th>
+                                            <th>Validité</th>
+                                            <th>Prix</th>
                                         </tr>
+                                        <%
+                                            for (Forfait f:l){ %>
+                                        <tr>
+                                            <td><% out.println(f.getId()); %></td>
+                                            <td><% out.println(f.getNomForfait()); %></td>
+                                            <td><% out.println(f.getSms()); %></td>
+                                            <td><% out.println(f.getAppel()); %></td>
+                                            <td><% out.println(f.getData()); %> Mo</td>
+                                            <td><% out.println(f.getValidite()); %> Jour(s)</td>
+                                            <td><% out.println(f.getPrix()); %> FCFA</td>
+                                        </tr>
+
+                                        <% } %>
                                     </table>
-                                    <% } //}%>
+                                    <br>
                                 </td>
                             </tr>
                         </table>
-                        <h3 class="tm-text-shadow">Proposition optimal:</h3>
-                        <% int[] list_p1 = (int[]) pack1.get(1);
-                            for(int i=0; i<list_p1.length;i++){
-                                if(list_p1[i]>0){
-                        %>
-                        <h2 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
-                        <% } } %>
+                        <% } //}%>
+                        </td>
+                        </tr>
+                        </table>
                     </article>
 
                     </p>

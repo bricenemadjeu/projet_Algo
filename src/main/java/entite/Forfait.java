@@ -12,10 +12,18 @@ public class Forfait {
     private long prix;
     private float valeur;
 
+    public float getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(float valeur) {
+        this.valeur = valeur;
+    }
+
     public Forfait() {
     }
 
-    public Forfait(Long id, String nomForfait, long sms, long appel, long data, long validite, long prix, float valeur) {
+    public Forfait(long id, String nomForfait, long sms, long appel, long data, long validite, long prix, float valeur) {
         this.id = id;
         this.nomForfait = nomForfait;
         this.sms = sms;
@@ -23,7 +31,6 @@ public class Forfait {
         this.data = data;
         this.validite = validite;
         this.prix = prix;
-        this.valeur = valeur;
     }
 
     public long getId() {
@@ -80,14 +87,6 @@ public class Forfait {
 
     public void setPrix(long prix) {
         this.prix = prix;
-    }
-
-    public float getValeur() {
-        return valeur;
-    }
-
-    public void setValeur(float valeur) {
-        this.valeur = valeur;
     }
 
     @Override
