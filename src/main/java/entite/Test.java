@@ -13,7 +13,7 @@ import java.util.*;
 public class Test {
     public static void main(String[] args) throws IOException, ParseException {
 
-        Operation operation = new Operation();
+       /* Operation operation = new Operation();
         ArrayList list = new ArrayList(); //Liste de forfaits combines
         ArrayList<Forfait> f = new ArrayList<Forfait>();
         ArrayList l = operation.meilleur_forfait(1000,7,0,0,1,1);
@@ -29,7 +29,7 @@ public class Test {
         for (Forfait f:l){
                 System.out.println(f.toString());
             //System.out.println("-----------------------------------------------------------------------------------------------------");
-       }*/
+       }
 
 
         if(l.isEmpty()){
@@ -45,7 +45,7 @@ public class Test {
                 }
                 System.out.println("------------------------------------------------------------------------------------------------------");
             }
-        }
+        }*/
 
 
     }
