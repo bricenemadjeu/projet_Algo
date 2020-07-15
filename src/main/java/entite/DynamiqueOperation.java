@@ -197,6 +197,10 @@ public class DynamiqueOperation {
         double[] value = knapsack(somme,list_pondere);
         int[] s = knapsacksol(somme,value,list_pondere);
         list.add(s);
+
+        double[] max_val = knapsack(somme,l);
+        double m = max_val[max_val.length-1];
+        list.add(m);
         return list;
     }
 

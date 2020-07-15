@@ -260,7 +260,7 @@
                         %>
                         <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Mango Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
                         <% } } %>
-                        <hr style="background-color: darkblue">
+                        <hr style="background-color: blue">
                     </article>
 
                     <article>
@@ -319,6 +319,20 @@
                         %>
                         <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Hemle Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
                         <% } } %>
+                        <hr style="background-color: blue">
+                        <h3 class="tm-text-shadow" style="background-color: rgb(0,0,196); border-radius: 10px">Nous vous proposons d'utiliser le forfait
+                        <%
+                            double mango = (double) pack.get(2);
+                            double hemle = (double) pack1.get(2);
+                            if(mango>hemle){
+                        %> Mango
+                            <%
+                                }
+                            else  if (hemle>mango){
+                            %> Hemle
+                            <% } %> pour maximiser votre besoin.
+                        </h3>
+
                     </article>
 
                     </p>
