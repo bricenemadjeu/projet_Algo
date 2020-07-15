@@ -258,7 +258,7 @@
                             for(int i=0; i<list_p.length;i++){
                                 if(list_p[i]>0){
                         %>
-                        <h2 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Mango Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
+                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Mango Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
                         <% } } %>
                         <hr style="background-color: darkblue">
                     </article>
@@ -317,7 +317,7 @@
                             for(int i=0; i<list_p1.length;i++){
                                 if(list_p1[i]>0){
                         %>
-                        <h2 class="tm-text-shadow" style="color: #0b0b0b">Souscrire le forfait Hemle Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
+                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Hemle Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
                         <% } } %>
                     </article>
 
