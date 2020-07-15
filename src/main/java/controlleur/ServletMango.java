@@ -1,5 +1,6 @@
 package controlleur;
 
+import entite.DynamiqueOperation;
 import entite.Forfait;
 import entite.Operation;
 import org.json.simple.parser.ParseException;
@@ -21,7 +22,7 @@ public class ServletMango extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Operation operation = new Operation();
+        DynamiqueOperation operation = new DynamiqueOperation();
         ArrayList<Forfait> list = new ArrayList<Forfait>();
         try {
             list = operation.list_forfait(1);
