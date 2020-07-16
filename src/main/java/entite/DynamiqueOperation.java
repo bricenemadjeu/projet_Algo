@@ -114,29 +114,31 @@ public class DynamiqueOperation {
      */
     private ArrayList<Pourcentage> poucentage_sms_Appel_Data(ArrayList<Forfait> forfaits){
         ArrayList<Pourcentage> list_pourcentage = new ArrayList();
-        double max_appel = maxAppels(forfaits);
-        if (max_appel==0){
-            max_appel = 1;
-        }
-        double max_sms = maxSMS(forfaits);
-        if(max_sms==0){
-            max_sms=1;
-        }
-        double max_data = maxData(forfaits);
-        if (max_data==0){
-            max_data=1;
-        }
-        for (int i=0;i<forfaits.size();i++){
-            double f_appel = forfaits.get(i).getAppel();
-            double f_sms = forfaits.get(i).getSms();
-            double f_data = forfaits.get(i).getData();
+        if(!forfaits.isEmpty()) {
+            double max_appel = maxAppels(forfaits);
+            if (max_appel == 0) {
+                max_appel = 1;
+            }
+            double max_sms = maxSMS(forfaits);
+            if (max_sms == 0) {
+                max_sms = 1;
+            }
+            double max_data = maxData(forfaits);
+            if (max_data == 0) {
+                max_data = 1;
+            }
+            for (int i = 0; i < forfaits.size(); i++) {
+                double f_appel = forfaits.get(i).getAppel();
+                double f_sms = forfaits.get(i).getSms();
+                double f_data = forfaits.get(i).getData();
 
-            double sms = (f_sms/max_sms)*100;
-            double appel = (f_appel/max_appel)*100;
-            double data = (f_data/max_data)*100;
+                double sms = (f_sms / max_sms) * 100;
+                double appel = (f_appel / max_appel) * 100;
+                double data = (f_data / max_data) * 100;
 
-            Pourcentage p = new Pourcentage(sms,appel,data);
-            list_pourcentage.add(new Pourcentage(sms,appel,data));
+                Pourcentage p = new Pourcentage(sms, appel, data);
+                list_pourcentage.add(new Pourcentage(sms, appel, data));
+            }
         }
 
         return list_pourcentage;
@@ -147,14 +149,17 @@ public class DynamiqueOperation {
      * @return
      */
     public ArrayList<Forfait> valeurPondere(ArrayList<Forfait> list_f, long somme, long jour, long sms, long appel, long data){
-        ArrayList<Forfait> list = triForfait(list_f,somme,jour); // Trier la liste
-        ArrayList<Pourcentage> pourcentage = poucentage_sms_Appel_Data(list);
-        for (int i=0;i<pourcentage.size();i++){
-            float valeur = (float) (((sms*pourcentage.get(i).getSms()) + (appel*pourcentage.get(i).getAppel()) + (data*pourcentage.get(i).getData())) / (sms+appel+data));
-            list.get(i).setValeur(valeur);
+        ArrayList<Forfait> list = new ArrayList<Forfait>();
+        if (!list_f.isEmpty()) {
+            list = triForfait(list_f, somme, jour); // Trier la liste
+            ArrayList<Pourcentage> pourcentage = poucentage_sms_Appel_Data(list);
+            for (int i = 0; i < pourcentage.size(); i++) {
+                float valeur = (float) (((sms * pourcentage.get(i).getSms()) + (appel * pourcentage.get(i).getAppel()) + (data * pourcentage.get(i).getData())) / (sms + appel + data));
+                list.get(i).setValeur(valeur);
 
+            }
+            Collections.sort(list, Forfait.ComparatoValeur);
         }
-        Collections.sort(list, Forfait.ComparatoValeur);
         return list;
     }
 
@@ -200,18 +205,21 @@ public class DynamiqueOperation {
 
     public ArrayList meilleurForfait(long somme, long jour, long sms, long appel, long data,int key) throws IOException, ParseException {
         ArrayList list = new ArrayList();
+        double m =0;
         ArrayList<Forfait> l = list_forfait(key);
-        l = triForfait(l,somme,jour); // Trier les forfaits
-        ArrayList<Forfait> list_pondere = valeurPondere(l,somme,jour,sms,appel,data);
-        list.add(list_pondere);
+            l = triForfait(l, somme, jour); // Trier les forfaits
+        if (!l.isEmpty()) {
+            ArrayList<Forfait> list_pondere = valeurPondere(l, somme, jour, sms, appel, data);
+            list.add(list_pondere);
 
-        double[] value = knapsack(somme,list_pondere);
-        int[] s = knapsacksol(somme,value,list_pondere);
-        list.add(s);
+            double[] value = knapsack(somme, list_pondere);
+            int[] s = knapsacksol(somme, value, list_pondere);
+            list.add(s);
 
-        double[] max_val = knapsack(somme,l);
-        double m = max_val[max_val.length-1];
-        list.add(m);
+            double[] max_val = knapsack(somme, l);
+            m = max_val[max_val.length - 1];
+            list.add(m);
+        }
         return list;
     }
 

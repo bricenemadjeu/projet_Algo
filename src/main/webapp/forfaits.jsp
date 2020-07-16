@@ -210,13 +210,20 @@
                             <tr>
                                 <td>
                                     <% ArrayList pack = (ArrayList) request.getAttribute("pack_m");
+                                        ArrayList<Forfait> l = new ArrayList<Forfait>();
                                         if(pack.isEmpty()){ %>
                                     <h3 class="tm-text-shadow">Aucun Forfait Mango disponible</h3>
                                     <%
                                     }
                                     else {
                                         //for (int j=0;j<=0;j++){
-                                        ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0);
+                                        l = (ArrayList<Forfait>) pack.get(0);
+                                        if (l.isEmpty()){
+                                    %>
+                                    <h3 class="tm-text-shadow">Aucun Forfait Mango disponible pour le moment</h3>
+                                    <%
+                                        }
+                                        else {
                                     %>
                                     <table>
                                         <tr>
@@ -250,7 +257,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <% } //}%>
+
                                 </td>
                             </tr>
                         </table>
@@ -259,8 +266,8 @@
                             for(int i=0; i<list_p.length;i++){
                                 if(list_p[i]>0){
                         %>
-                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Mango Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
-                        <% } } %>
+                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Mango Numero <% ArrayList<Forfait> l4 = (ArrayList<Forfait>) pack.get(0); Forfait f = l4.get(i); out.println(f.getId()); %> ---> <% out.println(list_p[i]); %> fois</h2>
+                        <% } } } }%>
                         <hr style="background-color: blue">
                     </article>
 
@@ -271,12 +278,19 @@
                                 <td>
                                     <%
                                         ArrayList pack1 = (ArrayList) request.getAttribute("pack_h");
+                                        ArrayList<Forfait> l1 = new ArrayList<Forfait>();
                                         if(pack1.isEmpty()){ %>
                                     <h3 class="tm-text-shadow">Aucun Forfait Hemle disponible</h3>
                                     <% }
                                     else {
                                         // for (int j=0;j<pack1.size();j++){
-                                        ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0);
+                                        l1 = (ArrayList<Forfait>) pack1.get(0);
+                                        if (l1.isEmpty()){
+                                    %>
+                                    <h3 class="tm-text-shadow">Aucun Forfait Hemle disponible</h3>
+                                    <%
+                                        }
+                                        else {
                                     %>
                                     <table>
                                         <tr>
@@ -292,7 +306,7 @@
                                                         <th>Prix</th>
                                                     </tr>
                                                     <%
-                                                        for (Forfait f:l){
+                                                        for (Forfait f:l1){
                                                     %>
 
                                                     <tr>
@@ -311,7 +325,6 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <% } //}%>
                                 </td>
                             </tr>
                         </table>
@@ -320,19 +333,21 @@
                             for(int i=0; i<list_p1.length;i++){
                                 if(list_p1[i]>0){
                         %>
-                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Hemle Numero <% ArrayList<Forfait> l = (ArrayList<Forfait>) pack1.get(0); Forfait f = l.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
-                        <% } } %>
+                        <h2 class="tm-text-shadow" style="color: white; border-radius: 10px; background-color: seagreen; padding: 5px">Souscrire le forfait Hemle Numero <% ArrayList<Forfait> l3 = (ArrayList<Forfait>) pack1.get(0); Forfait f = l3.get(i); out.println(f.getId()); %> ---> <% out.println(list_p1[i]); %> fois</h2>
+                        <% } } } }%>
                         <hr style="background-color: blue">
                         <%
+                            if(!l.isEmpty() && !l1.isEmpty()){
                             double mango = (double) pack.get(2);
                             double hemle = (double) pack1.get(2);
+
                             if(mango>hemle){
                         %><h3 class="tm-text-shadow" style="background-color: rgb(0,0,196); border-radius: 10px">Nous vous proposons d'utiliser le forfait Mango pour maximiser votre besoin.</h3>
                             <%
                                 }
                             else  if (hemle>mango){
                             %> <h3 class="tm-text-shadow" style="background-color: rgb(0,0,196); border-radius: 10px">Nous vous proposons d'utiliser le forfait Hemle pour maximiser votre besoin.</h3>
-                            <% } %>
+                            <% } }%>
 
 
                     </article>
