@@ -114,16 +114,27 @@ public class DynamiqueOperation {
      */
     private ArrayList<Pourcentage> poucentage_sms_Appel_Data(ArrayList<Forfait> forfaits){
         ArrayList<Pourcentage> list_pourcentage = new ArrayList();
+        double max_appel = maxAppels(forfaits);
+        if (max_appel==0){
+            max_appel = 1;
+        }
+        double max_sms = maxSMS(forfaits);
+        if(max_sms==0){
+            max_sms=1;
+        }
+        double max_data = maxData(forfaits);
+        if (max_data==0){
+            max_data=1;
+        }
         for (int i=0;i<forfaits.size();i++){
             double f_appel = forfaits.get(i).getAppel();
             double f_sms = forfaits.get(i).getSms();
             double f_data = forfaits.get(i).getData();
-            double max_appel = maxAppels(forfaits);
-            double max_sms = maxSMS(forfaits);
-            double max_data = maxData(forfaits);
+
             double sms = (f_sms/max_sms)*100;
             double appel = (f_appel/max_appel)*100;
             double data = (f_data/max_data)*100;
+
             Pourcentage p = new Pourcentage(sms,appel,data);
             list_pourcentage.add(new Pourcentage(sms,appel,data));
         }
@@ -135,7 +146,7 @@ public class DynamiqueOperation {
      * Ajouter les valeur dans la liste de forfait de depart
      * @return
      */
-    private ArrayList<Forfait> valeurPondere(ArrayList<Forfait> list_f, long somme, long jour, long sms, long appel, long data){
+    public ArrayList<Forfait> valeurPondere(ArrayList<Forfait> list_f, long somme, long jour, long sms, long appel, long data){
         ArrayList<Forfait> list = triForfait(list_f,somme,jour); // Trier la liste
         ArrayList<Pourcentage> pourcentage = poucentage_sms_Appel_Data(list);
         for (int i=0;i<pourcentage.size();i++){
@@ -150,7 +161,7 @@ public class DynamiqueOperation {
 
 
 
-    private double[] knapsack(long somme, ArrayList<Forfait> forfaits){
+    public double[] knapsack(long somme, ArrayList<Forfait> forfaits){
         double value[] = new double[(int) somme+1];
         value[0]=0;
         for(int w=1;w<=value.length-1;w++){
@@ -169,7 +180,7 @@ public class DynamiqueOperation {
     }
 
 
-    private int[] knapsacksol(long somme,double[] value, ArrayList<Forfait> t){
+    public int[] knapsacksol(long somme,double[] value, ArrayList<Forfait> t){
         int n = t.size();
         int[] s = new int[n];
         double v = value[value.length-1];
